@@ -35,3 +35,69 @@ function diffArray(arr1, arr2) {
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 
 3
+Intermediate Algorithm Scripting: Seek and Destroy
+
+Solve
+function destroyer(arr) {
+  let argumentsArr = [];
+  let resultArr = [];
+  for( let i = 1; i < arguments.length; i++) {
+    argumentsArr.push(arguments[i]);
+  }
+  arr.filter(getDiff);
+  function getDiff(num) {
+    if(argumentsArr.indexOf(num) == -1) {
+        resultArr.push(num);
+    }
+  }
+  return resultArr;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+4
+Intermediate Algorithm Scripting: Wherefore art thou
+
+Solve
+function whatIsInAName(collection, source) {
+  // What's in a name?
+  var arr = [];
+  // Only change code below this line
+  arr = collection.filter(compare);
+  function compare(obj) {
+    let countSameProp = 0;
+    let countProp = 0;
+    for(let key in source) {
+      countProp++;
+      if(obj.hasOwnProperty(key) && obj[key] == source[key]){
+	      // check how many  same properties with the same value  have objects
+        countSameProp++;
+      }
+    }
+    if(countSameProp == countProp) {
+	    // if all properties of source object are equal to the same properties obj  - return obj
+      return obj;
+    }
+    else return undefined;
+  }
+  
+  // Only change code above this line
+  return arr;
+}
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+5
+Intermediate Algorithm Scripting: Spinal Tap Case
+
+Solve
+function spinalCase(str) {
+  // "It's such a fine line between stupid, and clever."
+  // --David St. Hubbins
+  let arr = str.split(/\s|_|-|(?=[A-Z])/g).join("-").toLowerCase();
+  return arr;
+}
+
+spinalCase('This Is Spinal Tap');
+
+6
