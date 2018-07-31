@@ -1,0 +1,422 @@
+1
+Object Oriented Programming: Create a Basic JavaScript Object
+
+Solve
+let dog = {
+  name: "Alien",
+  numLegs: 4
+};
+
+2
+Object Oriented Programming: Use Dot Notation to Access the Properties of an Object
+
+Solve
+let dog = {
+  name: "Spot",
+  numLegs: 4
+};
+// Add your code below this line
+console.log(dog.name);
+console.log(dog.numLegs);
+
+3
+Object Oriented Programming: Create a Method on an Object
+
+Solve
+let dog = {
+  name: "Spot",
+  numLegs: 4,
+  sayLegs: ()=>`This dog has ${dog.numLegs} legs.`
+};
+
+dog.sayLegs();
+
+4
+Object Oriented Programming: Make Code More Reusable with the this Keyword
+
+Solve
+let dog = {
+  name: "Spot",
+  numLegs: 4,
+  sayLegs: function() {return "This dog has " + this.numLegs + " legs.";}
+};
+
+dog.sayLegs();
+
+5
+Object Oriented Programming: Define a Constructor Function
+
+Solve
+function Dog() {
+    this.name = "Alien",
+    this.color = "black",
+    this.numLegs = 4
+}
+
+6
+Object Oriented Programming: Use a Constructor to Create Objects
+
+Solve
+function Dog() {
+  this.name = "Rupert";
+  this.color = "brown";
+  this.numLegs = 4;
+}
+// Add your code below this line
+
+let hound = new Dog();
+
+7
+Extend Constructors to Receive Arguments
+
+Solve
+function Dog(name, color) {
+  this.name = name,
+  this.color = color,
+  this.numLegs = 4
+}
+
+let terrier = new Dog("hunter", "orange");
+
+8
+Object Oriented Programming: Verify an Object's Constructor with instanceof
+
+Solve
+/* jshint expr: true */
+
+function House(numBedrooms) {
+  this.numBedrooms = numBedrooms;
+}
+
+// Add your code below this line
+let myHouse = new House(10);
+myHouse instanceof House;
+
+9
+Object Oriented Programming: Understand Own Properties
+
+Solve
+function Bird(name) {
+  this.name = name;
+  this.numLegs = 2;
+}
+
+let canary = new Bird("Tweety");
+let ownProps = [];
+// Add your code below this line
+for(let keys in canary) {
+  if(canary.hasOwnProperty(keys)) {
+    ownProps.push(keys);
+  }
+}
+
+10
+Object Oriented Programming: Use Prototype Properties to Reduce Duplicate Code
+
+Solve
+function Dog(name) {
+  this.name = name;
+}
+
+
+
+// Add your code above this line
+let beagle = new Dog("Snoopy");
+Dog.prototype.numLegs = 4;
+
+11
+Object Oriented Programming: Iterate Over All Properties
+
+Solve
+function Dog(name) {
+  this.name = name;
+}
+
+Dog.prototype.numLegs = 4;
+
+let beagle = new Dog("Snoopy");
+
+let ownProps = [];
+let prototypeProps = [];
+
+// Add your code below this line 
+for(let keys in beagle){
+  if(beagle.hasOwnProperty(keys)){
+    ownProps.push(keys);
+  }
+  else {
+    prototypeProps.push(keys);
+  }
+}
+
+12
+Object Oriented Programming: Understand the Constructor Property
+
+Solve
+function Dog(name) {
+  this.name = name;
+}
+
+// Add your code below this line
+function joinDogFraternity(candidate) {
+  if(candidate.constructor === Dog) {
+    return true;
+  }
+  else return false;
+}
+
+13
+Object Oriented Programming: Change the Prototype to a New Object
+
+Solve
+function Dog(name) {
+  this.name = name; 
+}
+
+Dog.prototype = {
+  // Add your code below this line
+  numLegs: 4,
+  eat: function(){},
+  describe: function(){}
+};
+
+14
+Object Oriented Programming: Remember to Set the Constructor Property when Changing the Prototype
+
+Solve
+function Dog(name) {
+  this.name = name; 
+}
+
+// Modify the code below this line
+Dog.prototype = {
+  constructor: Dog,
+  numLegs: 2, 
+  eat: function() {
+    console.log("nom nom nom"); 
+  }, 
+  describe: function() {
+    console.log("My name is " + this.name); 
+  }
+};
+
+15
+Object Oriented Programming: Understand Where an Object’s Prototype Comes From
+
+Solve
+function Dog(name) {
+  this.name = name;
+}
+
+let beagle = new Dog("Snoopy");
+
+// Add your code below this line
+Dog.prototype.isPrototypeOf(beagle);
+
+16
+Object Oriented Programming: Understand the Prototype Chain
+
+Solve
+function Dog(name) {
+  this.name = name;
+}
+
+let beagle = new Dog("Snoopy");
+
+Dog.prototype.isPrototypeOf(beagle);  // => true
+
+// Fix the code below so that it evaluates to true
+Object.prototype.isPrototypeOf(Dog.prototype);
+
+17
+Object Oriented Programming: Use Inheritance So You Don't Repeat Yourself
+
+Solve
+function Cat(name) {
+  this.name = name; 
+}
+
+Cat.prototype = {
+  constructor: Cat, 
+};
+
+function Bear(name) {
+  this.name = name; 
+}
+
+Bear.prototype = {
+  constructor: Bear, 
+  
+};
+
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+18
+Object Oriented Programming: Inherit Behaviors from a Supertype
+
+Solve
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal, 
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+// Add your code below this line
+
+let duck = Object.create(Animal.prototype); // Change this line
+let beagle = Object.create(Animal.prototype); // Change this line
+
+duck.eat(); // Should print "nom nom nom"
+beagle.eat(); // Should print "nom nom nom" 
+
+19
+Object Oriented Programming: Set the Child's Prototype to an Instance of the Parent
+
+Solve
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+function Dog() { }
+
+// Add your code below this line
+Dog.prototype = Object.create(Animal.prototype);
+
+let beagle = new Dog();
+beagle.eat();  // Should print "nom nom nom"
+
+20
+Object Oriented Programming: Reset an Inherited Constructor Property
+
+Solve
+function Animal() { }
+function Bird() { }
+function Dog() { }
+
+Bird.prototype = Object.create(Animal.prototype);
+Dog.prototype = Object.create(Animal.prototype);
+
+// Add your code below this line
+Bird.prototype.constructor = Bird;
+Dog.prototype.constructor = Dog;
+
+
+let duck = new Bird();
+let beagle = new Dog();
+
+21
+Object Oriented Programming: Add Methods After Inheritance
+
+Solve
+function Animal() { }
+Animal.prototype.eat = function() { console.log("nom nom nom"); };
+
+function Dog() { }
+
+// Add your code below this line
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+Dog.prototype.bark = function() {console.log("Woof!")};
+// Add your code above this line
+let beagle = new Dog();
+
+beagle.eat(); // Should print "nom nom nom"
+beagle.bark(); // Should print "Woof!"
+
+22
+Object Oriented Programming: Override Inherited Methods
+
+Solve
+function Bird() { }
+
+Bird.prototype.fly = function() { return "I am flying!"; };
+
+function Penguin() { }
+Penguin.prototype = Object.create(Bird.prototype);
+Penguin.prototype.constructor = Penguin;
+
+// Add your code below this line
+Penguin.prototype.fly = function() {return "Alas, this is a flightless bird."};
+
+
+// Add your code above this line
+
+let penguin = new Penguin();
+console.log(penguin.fly());
+
+23
+Object Oriented Programming: Use a Mixin to Add Common Behavior Between Unrelated Objects
+
+Solve
+let bird = {
+  name: "Donald",
+  numLegs: 2
+};
+
+let boat = {
+  name: "Warrior",
+  type: "race-boat"
+};
+
+// Add your code below this line
+let glideMixin = function(obj) {
+  obj.glide = function() {
+    console.log("I can fly");
+  }
+}
+glideMixin(boat);
+glideMixin(bird);
+boat.glide();
+bird.glide();
+
+24
+Object Oriented Programming: Use Closure to Protect Properties Within an Object from Being Modified Externally
+
+Solve
+function Bird() {
+  let weight = 15;
+  this.getWeight = function() {
+    return weight;
+  }
+  
+}
+
+25
+Object Oriented Programming: Understand the Immediately Invoked Function Expression (IIFE)
+
+Solve
+(function() {
+  console.log("A cozy nest is ready");
+})()
+
+26
+let funModule = (function(){
+ return {
+    isCuteMixin:function(obj) {
+        obj.isCute = function() {
+        return true;
+      };
+    },
+    singMixin:function(obj) {
+        obj.sing = function() {
+        console.log("Singing to an awesome tune");
+      };
+    }
+ }
+})();
+
