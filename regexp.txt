@@ -1,0 +1,184 @@
+8.
+ Regular Expressions: Match Single Character with Multiple Possibilities
+
+Solve
+let quoteSample = "Beware of bugs in the above code; I have only proved it correct, not tried it.";
+let vowelRegex = /[aeiou]/gi; // Change this line
+let result = quoteSample.match(vowelRegex); // Change this line
+
+9.
+Regular Expressions: Match Letters of the Alphabet
+
+Solve
+let quoteSample = "The quick brown fox jumps over the lazy dog.";
+let alphabetRegex = /[a-z]/gi; // Change this line
+let result = quoteSample.match(alphabetRegex); // Change this line
+
+10. 
+Regular Expressions: Match Numbers and Letters of the Alphabet
+
+Solve
+let quoteSample = "Blueberry 3.141592653s are delicious.";
+let myRegex = /[h-s2-6]/gi; // Change this line
+let result = quoteSample.match(myRegex); // Change this line
+
+11.
+Regular Expressions: Match Single Characters Not Specified
+
+Solve
+let quoteSample = "3 blind mice.";
+let myRegex = /[^aeiou0-9]/gi; // Change this line
+let result = quoteSample.match(myRegex); // Change this line
+
+12.
+Regular Expressions: Match Characters that Occur One or More Times
+
+Solve
+let difficultSpelling = "Mississippi";
+let myRegex = /s+/g; // Change this line
+let result = difficultSpelling.match(myRegex);
+
+13.
+Regular Expressions: Match Characters that Occur Zero or More Times
+
+Solve
+let chewieQuote = "Aaaaaaaaaaaaaaaarrrgh!";
+let chewieRegex = /Aa*/; // Change this line
+let result = chewieQuote.match(chewieRegex);
+
+14
+Regular Expressions: Find One or More Criminals in a Hunt
+
+Solve
+let crowd = 'P1P2P3P4P5P6CCCP7P8P9';
+
+let reCriminals = /c+/i; // Change this line
+
+let matchedCriminals = crowd.match(reCriminals);
+console.log(matchedCriminals);
+
+15
+Regular Expressions: Match Beginning String Patterns
+
+Solve
+let rickyAndCal = "Cal and Ricky both like racing.";
+let calRegex = /^Cal/; // Change this line
+let result = calRegex.test(rickyAndCal);
+
+16
+Regular Expressions: Match Ending String Patterns
+
+Solve
+let caboose = "The last car on a train is the caboose";
+let lastRegex = /caboose$/; // Change this line
+let result = lastRegex.test(caboose);
+
+17
+Regular Expressions: Match All Letters and Numbers
+
+Solve
+let quoteSample = "The five boxing wizards jump quickly.";
+let alphabetRegexV2 = /\w/g; // Change this line
+let result = quoteSample.match(alphabetRegexV2).length;
+
+18
+Regular Expressions: Match Everything But Letters and Numbers
+
+Solve
+let quoteSample = "The five boxing wizards jump quickly.";
+let nonAlphabetRegex = /\W/g; // Change this line
+let result = quoteSample.match(nonAlphabetRegex).length;
+
+19
+let numString = "Your sandwich will be $5.00";
+let numRegex = /\d/g; // Change this line
+let result = numString.match(numRegex).length;
+
+20
+Regular Expressions: Match All Non-Numbers
+
+Solve
+let numString = "Your sandwich will be $5.00";
+let noNumRegex = /\D/g; // Change this line
+let result = numString.match(noNumRegex).length;
+
+21
+Regular Expressions: Restrict Possible Usernames
+
+Solve
+let username = "JackOfAllTrades";
+let userCheck = /[a-z][a-z][0-9]*$/i; // Change this line
+let result = userCheck.test(username);
+
+22
+Regular Expressions: Match Whitespace
+
+Solve
+let sample = "Whitespace is important in separating words";
+let countWhiteSpace = /\s/g; // Change this line
+let result = sample.match(countWhiteSpace);
+
+23
+Regular Expressions: Match Non-Whitespace Characters
+
+Solve
+let sample = "Whitespace is important in separating words";
+let countNonWhiteSpace = /\S/g; // Change this line
+let result = sample.match(countNonWhiteSpace);
+
+24
+Regular Expressions: Specify Upper and Lower Number of Matches
+
+Solve
+let ohStr = "Ohhh no";
+let ohRegex = /Oh{3,6} no/; // Change this line
+let result = ohRegex.test(ohStr);
+
+25
+Regular Expressions: Specify Only the Lower Number of Matches
+
+Solve
+let haStr = "Hazzzzah";
+let haRegex = /Haz{4,}ah/; // Change this line
+let result = haRegex.test(haStr);
+
+26
+Regular Expressions: Specify Exact Number of Matches
+
+Solve
+let timStr = "Timmmmber";
+let timRegex = /Tim{4}ber/; // Change this line
+let result = timRegex.test(timStr);
+
+27
+Regular Expressions: Check for All or None
+
+Solve
+let favWord = "favorite";
+let favRegex = /favou?rite/; // Change this line
+let result = favRegex.test(favWord);
+
+28
+Regular Expressions: Positive and Negative Lookahead
+
+Solve
+let sampleWord = "astronaut";
+let pwRegex = /(?=\w{5,})(?=\D*\d{2})/; // Change this line
+let result = pwRegex.test(sampleWord);
+
+29
+Regular Expressions: Use Capture Groups to Search and Replace
+
+Solve
+let huhText = "This sandwich is good.";
+let fixRegex = /good/; // Change this line
+let replaceText = "okey-dokey"; // Change this line
+let result = huhText.replace(fixRegex, replaceText);
+
+30
+Regular Expressions: Remove Whitespace from Start and End
+
+Solve
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s*|\s*$/g; // Change this line
+let result = hello.replace(wsRegex, ""); // Change this line
