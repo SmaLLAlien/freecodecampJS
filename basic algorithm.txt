@@ -1,0 +1,289 @@
+1
+Basic Algorithm Scripting: Convert Celsius to Fahrenheit
+
+Solve
+function convertToF(celsius) {
+  let fahrenheit = celsius *9/5 + 32;
+  return fahrenheit;
+}
+
+convertToF(30);
+
+2
+Basic Algorithm Scripting: Reverse a String
+
+Solve
+function reverseString(str) {
+  let arr = [];
+  let str2 = '';
+
+  for (let i = str.length -1 ; i >= 0; i-- ) {
+    str2 = str2.concat(str[i]);
+  }
+  return str2;
+}
+
+reverseString("hello");
+
+3
+Basic Algorithm Scripting: Factorialize a Number
+
+Solve
+function factorialize(num) {
+  let result = 1;
+  for( let i = 1; i <= num; i++) {
+     result = result*i;
+  }
+  return result;
+}
+
+factorialize(5);
+
+4
+Basic Algorithm Scripting: Find the Longest Word in a String
+
+Solve
+function findLongestWordLength(str) {
+  let lengthLargeWorld = 0;
+  let arr = str.split(" ");
+  
+  for(let i = 0; i < arr.length; i++) {
+    if (lengthLargeWorld < arr[i].length) {
+      lengthLargeWorld = arr[i].length;
+    }
+  }
+  return lengthLargeWorld;
+}
+
+findLongestWordLength("The quick brown fox jumped over the lazy dog");
+
+5
+Basic Algorithm Scripting: Return Largest Numbers in Arrays
+
+Solve
+function largestOfFour(arr) {
+  let arrMax = [];
+  for(let i = 0; i < arr.length; i++) {
+    let max = arr[i][0];
+    for( let j = 0; j < arr[i].length; j++) {
+        if(arr[i][j] > max) {
+          max = arr[i][j];
+        }
+    }
+    arrMax.push(max);
+  }
+  return arrMax;
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+6
+Basic Algorithm Scripting: Confirm the Ending
+
+Solve
+function confirmEnding(str, target) {
+  let stringEnd = str.substring(str.length - target.length);
+  if (!stringEnd.localeCompare(target)) {
+    return true;
+  }
+  return false;
+}
+
+confirmEnding("Bastian", "n");
+
+7
+Basic Algorithm Scripting: Repeat a String Repeat a String
+
+
+Solve
+function repeatStringNumTimes(str, num) {
+  let str2 = '';
+  while(num > 0) {
+    str2+=str;
+    num--;
+  }
+  return str2;
+}
+
+repeatStringNumTimes("abc", 3);
+
+8
+Basic Algorithm Scripting: Truncate a String
+
+Solve
+function truncateString(str, num) {
+  if(num < str.length) {
+    str = str.substr(0, num) + '...';
+  }
+  return str;
+}
+
+truncateString("A-tisket a-tasket A green and yellow basket", 8);
+
+9
+Basic Algorithm Scripting: Finders Keepers
+
+Solve
+function findElement(arr, func) {
+  let num = 0;
+  for( let i = 0; i < arr.length; i++) {
+    let b = func(arr[i]);
+    if(b){
+      return num = arr[i];
+    }
+  }
+}
+
+findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+10
+Basic Algorithm Scripting: Boo who
+
+Solve
+function booWho(bool) {
+  // What is the new fad diet for ghost developers? The Boolean.
+  let valueType = typeof(bool);
+  if(valueType === 'boolean'){
+    return true;
+  }
+  return false;
+}
+
+booWho(null);
+
+11
+Basic Algorithm Scripting: Title Case a Sentence
+
+Solve
+*****************************************
+1st variant
+function titleCase(str) {
+  str = str.toLowerCase().split(' ');
+  for( let i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+  }
+  str = str.join(' ');
+  return str;
+  }
+
+  titleCase("I'm a little tea pot");
+  
+
+**********************************************
+2nd variant
+function titleCase(str) {
+  str = str.toLowerCase();
+  let str2 = '';
+  // find the first alphabetic symbol and its index
+  let firstLetter = str.match(/[a-z]/);
+  let posFirstLetter = firstLetter.index;
+  // write to str2 everything till this symbol including it
+  for(let i = 0; i <= posFirstLetter; i++) {
+    str2 = str2 + str[i].toUpperCase();
+  }
+  // write to str2 all that left
+  for( let i = posFirstLetter + 1; i < str.length; i++) {
+    if(str[i - 1] == ' ' )
+    {
+      let temp = str[i].toUpperCase();
+      str2 = str2 + temp;
+    }
+    else {
+      str2 = str2 + str[i];
+    }
+  }
+  return str2;
+}
+
+titleCase("I'm a little tea pot");
+
+12
+Basic Algorithm Scripting: Slice and Splice
+
+Solve
+function frankenSplice(arr1, arr2, n) {
+  let arr = [];
+  arr = arr2.slice();
+  arr.splice(n, 0, ...arr1);
+  return arr;
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+13
+Basic Algorithm Scripting: Falsy Bouncer
+
+Solve
+function bouncer(arr) {
+
+  return arr.filter((iterator) => {
+      if(iterator) {
+        return iterator;
+      }
+  });
+   
+}
+
+bouncer([7, "ate", "", false, 9]);
+
+14
+Basic Algorithm Scripting: Where do I Belong
+
+Solve
+function getIndexToIns(arr, num) {
+  // Find my place in this sorted array.
+for(let i = 0; i < arr.length; i++) {
+  for(let j = 0; j < arr.length - 1; j++) {
+      if(arr[j] > arr[j+1]) {
+      let temp = arr[j+1];
+      arr[j+1] = arr[j];
+      arr[j] = temp
+      }
+  }
+}
+let m = 0;
+for(let i = 0; i < arr.length; i++) {
+  if(arr[i] >= num){
+    m = i;
+   return m;
+  }
+}
+m = arr.length;
+return m; 
+}
+
+getIndexToIns([40, 60], 50);
+
+15
+Basic Algorithm Scripting: Mutations
+	
+Solve
+function mutation(arr) {
+  let firstStr = arr[0].toLowerCase();
+  let secondStr = arr[1].toLowerCase();
+  for( let i = 0; i < secondStr.length; i++) {
+    let m = firstStr.indexOf(secondStr[i]);
+    if(m == -1) {
+      return false;
+    }
+  }
+return true;
+}
+
+mutation(["hello", "hey"]);
+
+16
+Basic Algorithm Scripting: Chunky Monkey
+
+Solve
+function chunkArrayInGroups(arr, size) {
+  let newArr = [];
+  let arrSize = arr.length/size;
+  let m = 0;
+    for( let i = 0; i < arrSize; i++) {
+      newArr[i] = arr.splice(m, size);
+  }
+  return newArr;
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
