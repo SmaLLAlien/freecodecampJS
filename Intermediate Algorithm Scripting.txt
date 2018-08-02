@@ -101,3 +101,100 @@ function spinalCase(str) {
 spinalCase('This Is Spinal Tap');
 
 6
+Intermediate Algorithm Scripting: Pig Latin
+
+Solve
+function translatePigLatin(str) {
+  let vovels = /^[aouei]/gi;
+  let consonants = /^[^aouei]+/i;
+  if(vovels.test(str)){
+	str = str.concat("way");
+  }
+  if(consonants.test(str)){
+    if(/[aouie]/gi.test(str)) { //if str has some vowels
+      str = str.concat(str.match(consonants)) + "ay";
+      str = str.replace(consonants, "");
+    }
+    else { //if str doest have any vowels
+      str = str + "ay";
+    }
+  }
+  return str;
+}
+
+translatePigLatin("consonant");
+
+7
+Intermediate Algorithm Scripting: Search and Replace
+
+Solve
+function myReplace(str, before, after) {
+  if(/^[A-Z]/.test(before[0])) {
+    // if "before" has first upper letter => chage first letter in "after"
+    after = after[0].toUpperCase() + after.substr(1, after.length - 1);
+  }
+  str = str.replace(before, after);
+  return str;
+}
+myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+
+8
+Intermediate Algorithm Scripting: DNA Pairing
+
+Solve
+function pairElement(str) {
+  let strArray = str.split("");
+  let resArr = [];
+  for(let i = 0; i < strArray.length; i++) {
+    if(strArray[i] == "A") {
+      resArr.push(["A", "T"]);
+    }
+    if(strArray[i] == "T") {
+      resArr.push(["T", "A"]);
+    }
+    if(strArray[i] == "C") {
+      resArr.push(["C", "G"]);
+    }
+    if(strArray[i] == "G") {
+      resArr.push(["G", "C"]);
+    }
+  }
+  return resArr;
+}
+
+pairElement("GCG");
+
+9
+Intermediate Algorithm Scripting: Missing letters
+
+Solve
+function fearNotLetter(str) {
+  let first = str.charCodeAt(0);
+  let last = str.charCodeAt(str.length - 1);
+  let missingLetter = 0;
+  // get array of letters
+  str = str.toLowerCase().split("");
+  // ger array of letter`s code
+  let ArrOfCode = str.map((num) => {return num.charCodeAt(0)});
+  // check if there is missing letter and return it
+  for(let i = 0; i < ArrOfCode.length - 1; i++) {
+    // dont check last letter
+    if(i == ArrOfCode.length - 1) {
+      break;
+    }
+    if(ArrOfCode[i + 1] != ArrOfCode[i] + 1) {
+        missingLetter = ArrOfCode[i] + 1;
+    }
+  }
+  if(missingLetter ==0) {
+  return undefined;
+  }
+  // get letter from code
+  missingLetter = String.fromCharCode(missingLetter);
+  return missingLetter;
+}
+
+fearNotLetter("abce");
+
+10
+
