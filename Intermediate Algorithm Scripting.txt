@@ -391,3 +391,107 @@ function binaryAgent(str) {
 binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
 
 18
+Intermediate Algorithm Scripting: Everything Be True
+
+Solve
+function truthCheck(collection, pre) {
+  // Is everyone being true?
+  let count = 0;
+  for(let i = 0; i < collection.length; i++) {
+    if(collection[i].hasOwnProperty(pre) && collection[i][pre]) {
+      count++;
+    }
+    else return false;
+  }
+  if(count == collection.length) {
+    return true;
+  }
+  
+}
+
+truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+
+19
+Intermediate Algorithm Scripting: Arguments Optional
+
+Solve
+function addTogether() {
+// check arguments for numbers
+  for(let i = 0; i < arguments.length; i++) {
+    if(typeof arguments[i] != 'number') {
+      return undefined;
+    }
+  }
+   if(arguments.length == 2) {
+    return arguments[0] + arguments[1];
+  }
+  if(arguments.length == 1) {
+  // save first argument
+    let x = arguments[0]
+    return function(y) {
+	// check arguments for numbers
+      if(typeof arguments[0] != 'number') {
+        return undefined;
+      }
+      return x + y;
+    }
+  }
+}
+
+addTogether(2,3);
+
+20
+Intermediate Algorithm Scripting: Make a Person
+
+Solve
+var Person = function(firstAndLast) {
+  // Complete the method below and implement the others similarly
+  let fullName = firstAndLast;
+  let firstName = fullName.split(/\s/)[0];
+  let lastName = fullName.split(/\s/)[1];
+  this.getFirstName = function() {
+     return firstName;
+  }
+  this.getLastName = function() {
+     return lastName;
+  }
+  this.getFullName = function() {
+    return this.getFirstName() + " " + this.getLastName();
+  };
+  this.setFirstName = function(first) {
+     return firstName = first;
+  }
+  this.setLastName = function(last) {
+     return lastName = last;
+  }
+  this.setFullName = function(full) {
+     this.setFirstName(full.split(/\s/)[0]) +  this.setLastName(full.split(/\s/)[1]);
+  }
+};
+
+var bob = new Person('Bob Ross');
+bob.getFullName();  
+
+21
+Intermediate Algorithm Scripting: Map the Debris
+
+Solve
+function orbitalPeriod(arr) {
+  var GM = 398600.4418;
+  var earthRadius = 6367.4447;
+  const PI = 3.1415926535;
+  let arr2 = arr.map(callback);
+  function callback(obj) {
+    for(let key in obj) {
+      if(obj.hasOwnProperty("avgAlt")) {
+        obj.orbitalPeriod = Math.round(2 * PI * Math.sqrt(Math.pow((earthRadius + obj.avgAlt),3)/GM));
+        delete obj.avgAlt;
+      }
+       return obj;
+    }
+  }
+  return arr2;
+
+}
+
+orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
