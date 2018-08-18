@@ -1,0 +1,281 @@
+1
+JavaScript Algorithms and Data Structures Projects: Palindrome Checker
+
+Solve
+function palindrome(str) {
+  // delete all not alphabetic symbols
+  let clearStr = str.toLowerCase().replace(/\W|_/g, "");
+  let countEqual = 0;
+  //check if string from the end equals to string from the begining
+  for(let i= 0; i < clearStr.length; i++) {
+    if(clearStr[i] == clearStr[clearStr.length - i - 1]) {
+      countEqual++;
+    }
+  }
+  if(countEqual == clearStr.length) {
+    return true;
+  }
+  return false;
+}
+palindrome("eye");
+
+2
+JavaScript Algorithms and Data Structures Projects: Roman Numeral Converter
+
+Solve
+function convertToRoman(num) {
+let units = num % 10;
+let decades = ((num % 100) - units) / 10;
+let hundreds = ((num % 1000) - (num % 100) )/ 100
+let thousands = (num - hundreds * 100 - decades * 10 - units)/1000;
+let romanArray = [];
+
+if(units) {
+    let romanUnits = getRoman(units, "units");
+    romanArray.unshift(romanUnits);
+}
+if(decades) {
+    let romanDecades = getRoman(decades, "decades");
+    romanArray.unshift(romanDecades);
+}
+if(hundreds) {
+    let romanHundreds = getRoman(hundreds, "hundreds");
+    romanArray.unshift(romanHundreds);
+}
+if(thousands) {
+    romanArray.unshift("M".repeat(thousands));
+}
+function getRoman(number, flag) {
+    let romanUnitsArray = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+    let romanDecadesArray = ["X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+    let romanHundredsArray = ["C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
+    let roman = "";
+    if(flag == "units") {
+        roman = romanUnitsArray[number - 1];
+    }
+    if(flag == "decades") {
+        roman = romanDecadesArray[number - 1];
+    }
+    if(flag == "hundreds") {
+        roman = romanHundredsArray[number - 1];
+    }
+    return roman;
+}
+    return romanArray.join("");
+}
+
+convertToRoman(36);
+
+3
+JavaScript Algorithms and Data Structures Projects: Caesars Cipher
+
+Solve 1st variant
+function rot13(str) { // LBH QVQ VG!
+  let result = [];
+  for(let i = 0; i < str.length; i++) {
+    let symbolCode = 0;
+    if(str.charCodeAt(i) > 90 || str.charCodeAt(i) < 65) {
+      result[i] = str[i];
+    }
+    else {
+      if(str.charCodeAt(i) < 78) {
+        symbolCode = str.charCodeAt(i) - 13 + 26;
+        result[i] = String.fromCharCode(symbolCode);        
+      }
+      else {
+        symbolCode = str.charCodeAt(i) - 13;
+        result[i] = String.fromCharCode(symbolCode);
+      }
+      
+    }
+  }
+  return result.join("");
+}
+
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");
+
+Solve 2nd variant
+function rot13(str) { // LBH QVQ VG!
+  let result = [];
+  for(let i = 0; i < str.length; i++) {
+    let symbolCode = 0;
+    if(str.charCodeAt(i) > 90 || str.charCodeAt(i) < 65) {
+      result[i] = str[i];
+    }
+    else {
+      let k = str.charCodeAt(i) - 65 + 13;
+      let t = Math.abs(k%26);
+      symbolCode = t;
+      result[i] = String.fromCharCode(symbolCode + 65);
+    }
+  }
+  return result.join("");
+}
+
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");
+
+4
+function telephoneCheck(str) {
+  // Good luck!
+  let check = /^(1{1}\s*)([0-9]{10})/;
+  let bool = check.test(str);
+  return bool;
+}
+
+telephoneCheck("555-555-5555");
+
+5
+JavaScript Algorithms and Data Structures Projects: Cash Register
+
+Solve
+function checkCashRegister(price, cash, cid) {
+  // our change
+  let change = cash - price;
+  // sum all money in cid
+  let cahsInCid = 0;
+  // number of coins each nominal in change
+  let changeHundreds = 0;
+  let changeTwenty = 0;
+  let changeTen = 0;
+  let changeFive = 0;
+  let changeOne = 0;
+  let changeQuarter = 0;
+  let changeDime = 0;
+  let changeNickel = 0;
+  let changePenny = 0;
+  // result array with change
+  let changeArr = [];
+  for(let i = 0; i < cid.length; i++) {
+    cahsInCid += cid[i][1];
+  }
+  cahsInCid = Math.round(cahsInCid * 100) / 100;
+  let [penny, nickel, dime, quarter, one, five, ten, twenty, hundred] = cid;
+
+  // count if we can give change
+  while(change >= 100 && hundred[1]) {
+    change = change - 100;
+    hundred[1] = hundred[1] - 100;
+    changeHundreds++;
+  }
+  while(change >= 20 && twenty[1]) {
+    change = change - 20;
+    twenty[1] = twenty[1] - 20;
+    changeTwenty++;
+  }
+  while(change >= 10 && ten[1]) {
+    change = change - 10;
+    ten[1] = ten[1] - 10;
+    changeTen++;
+  }
+  while(change >= 5 && five[1]) {
+    change = change - 5;
+    five[1] = five[1] - 5
+    changeFive++;
+  }
+  while(change >= 1 && one[1]) {
+    change = change - 1;
+    one[1] = one[1] - 1
+    changeOne++;
+  }
+  while(change >= 0.25 && quarter[1]) {
+    change = change - 0.25;
+    quarter[1] = quarter[1] - 0.25;
+    changeQuarter++;
+  }
+  while(change >= 0.1 && dime[1]) {
+    change = change - 0.1;
+    dime[1] = dime[1] - 0.1;
+    changeDime++;
+  }
+  while(change >= 0.05 && nickel[1]) {
+    change = change - 0.05;
+    nickel[1] = nickel[1] - 0.05;
+    changeNickel++;
+  }
+  while(change >= 0.01 && penny[1]) {
+    change = Math.round((change - 0.01) * 100) / 100 ;
+    penny[1] = penny[1] - 0.01;
+    changePenny++;
+  }
+
+  // count how much money we have in kassa
+  cahsInCid = cahsInCid - changePenny * 0.01 - changeNickel * 0.05 - changeDime * 0.1 - changeQuarter * 0.25 - 
+  changeOne * 1 - changeFive * 5 - changeTen * 10 - changeHundreds * 100;
+
+  // if no money in kassa but we give all change then close kassa 
+    if(cahsInCid == 0 && change == 0) {
+    penny[1] = changePenny * 0.01;
+    changeArr.push(penny);
+    nickel[1] = changeNickel * 0.05;
+    changeArr.push(nickel);
+    dime[1] = changeDime * 0.1;
+    changeArr.push(dime);
+    quarter[1] = changeQuarter * 0.25;
+    changeArr.push(quarter);
+    one[1] = changeOne * 1;
+    changeArr.push(one);
+    five[1] = changeFive * 5;
+    changeArr.push(five);
+    ten[1] = changeTen * 10;
+    changeArr.push(ten);
+    twenty[1] = changeTwenty * 20;
+    changeArr.push(twenty);
+    hundred[1] = changeHundreds * 100;
+    changeArr.push(hundred);
+
+    return   {status: "CLOSED", change: changeArr}
+  }
+  
+  // if we still have change then we cannot give it
+  if (change) {
+    return {status: "INSUFFICIENT_FUNDS", change: []}
+  }
+  // if we dont have change(we all give it back) and we have some money in kassa
+  else {
+    
+    if(changePenny) {
+      penny[1] = changePenny * 0.01;
+      changeArr.unshift(penny);
+    }
+    if(changeNickel) {
+      nickel[1] = changeNickel * 0.05;
+      changeArr.unshift(nickel);
+    }
+    if(changeDime) {
+      dime[1] = changeDime * 0.1;
+      changeArr.unshift(dime);
+    }
+    if(changeQuarter) {
+      quarter[1] = changeQuarter * 0.25;
+      changeArr.unshift(quarter);
+    }
+    if(changeOne) {
+      one[1] = changeOne * 1;
+      changeArr.unshift(one);
+    }
+    if(changeFive) {
+      five[1] = changeFive * 5;
+      changeArr.unshift(five);
+    }
+    if(changeTen) {
+      ten[1] = changeTen * 10;
+      changeArr.unshift(ten);
+    }
+    if(changeTwenty) {
+      twenty[1] = changeTwenty * 20;
+      changeArr.unshift(twenty);
+    }
+    if(changeHundreds) {
+      hundred[1] = changeHundreds * 100;
+      changeArr.unshift(hundred);
+    }
+    return  {status: "OPEN", change: changeArr};
+  }
+  // Here is your change, ma'am.
+  // return changeQuarter;
+}
+
+
+checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])
